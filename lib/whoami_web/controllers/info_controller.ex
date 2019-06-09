@@ -23,7 +23,7 @@ defmodule WhoamiWeb.InfoController do
   end
 
   def health(conn, _params) do
-    if HealthManager.is_health?() do
+    if HealthManager.is_healthy?() do
       resp(conn, 200, "I am fine.")
     else
       Logger.warn("Whoami is not healthy.")
@@ -34,7 +34,7 @@ defmodule WhoamiWeb.InfoController do
   def change_health(conn, %{"value" => health_value} = _) do
     health_value = String.to_integer(health_value)
     if health_value > 0 and health_value < 101 do
-
+      HealthManager.change_health(health_value)
       resp(conn, 200, "Health changed to #{health_value}%.")
     else
       resp(conn, 400, "Health value must be greater then 0 or lower/equal then 100.")

@@ -29,7 +29,7 @@ defmodule Whoami.HealthManager do
     Agent.update(__MODULE__, fn _ -> health end)
   end
 
-  def is_health? do
-    (current_health() * :random.uniform()) >= 10
+  def is_healthy? do
+    round(100 * :rand.uniform()) <= current_health()
   end
 end
