@@ -10,8 +10,8 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :whoami, WhoamiWeb.Endpoint,
-  http: [:inet6, port: "${PORT}"],
-  url: [host: "localhost", port: "${PORT}"],
+  http: [:inet6, port: 4000],
+  url: [host: "localhost", port: 4000],
   server: true,
   root: ".",
   version: Application.spec(:whoami, :vsn)

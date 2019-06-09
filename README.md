@@ -17,6 +17,5 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 Environment variables:
 ```sh
-# Required
-PORT=4000
+# None environment variables
 ```
