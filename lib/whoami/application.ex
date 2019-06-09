@@ -9,9 +9,10 @@ defmodule Whoami.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      WhoamiWeb.Endpoint
+      WhoamiWeb.Endpoint,
       # Starts a worker by calling: Whoami.Worker.start_link(arg)
       # {Whoami.Worker, arg},
+      Whoami.RootSupervisor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
