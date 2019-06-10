@@ -19,3 +19,9 @@ Environment variables:
 ```sh
 # None environment variables
 ```
+
+## Useful commands
+
+```sh
+MIX_ENV=prod REPLACE_OS_VARS=true mix do phx.digest, release --env=prod
+```

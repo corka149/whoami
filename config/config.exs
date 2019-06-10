@@ -11,7 +11,6 @@ use Mix.Config
 config :whoami, WhoamiWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "YsxUfsZho6EJgsxIQfc40ujhq8jgvhG2F0kH7DDwzBB5FFi1ptEQF1JDUQS1CYbc",
-  render_errors: [view: WhoamiWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: Whoami.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

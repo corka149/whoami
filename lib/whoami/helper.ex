@@ -12,7 +12,6 @@ defmodule Whoami.Helper do
   def get_stats() do
     %{
       host: get_host(),
-      os_process_owner: get_process_owner(),
       ipv4_addresses: get_ipv4_adresses()
     }
   end
@@ -21,11 +20,6 @@ defmodule Whoami.Helper do
     {:ok, name} = :inet.gethostname()
     name
     |> to_string()
-  end
-
-  defp get_process_owner do
-    {user, 0} = System.cmd "whoami", []
-    user |> String.replace("\n", "")
   end
 
   defp get_ipv4_adresses() do

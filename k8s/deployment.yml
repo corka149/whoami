@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoami-deployment
+  labels:
+    app: whoami
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whoami
+  template:
+    metadata:
+      labels:
+        app: whoami
+    spec:
+      containers:
+      - name: whoami
+        image: whoami:1.0.1
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "400Mi"
+          requests:
+            cpu: "0.2"
+            memory: "100Mi"
+        ports:
+        - containerPort: 4000
+        livenessProbe: 
+          httpGet:
+            path: /v1/health
+            port: 4000
+        readinessProbe:
+          httpGet:
+            path: /v1/ready
+            port: 4000
