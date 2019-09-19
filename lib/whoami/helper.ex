@@ -12,7 +12,8 @@ defmodule Whoami.Helper do
   def get_stats() do
     %{
       host: get_host(),
-      ipv4_addresses: get_ipv4_adresses()
+      ipv4_addresses: get_ipv4_adresses(),
+      env_msg: Application.fetch_env!(:whoami, :env_msg)
     }
   end
 
