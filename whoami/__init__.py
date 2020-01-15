@@ -1,6 +1,8 @@
 import logging
 import random
 import os
+import socket
+import asyncio
 from quart import Quart
 
 
@@ -20,8 +22,25 @@ class HealthManager:
 
 
 app = Quart(__name__)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("whoami")
 health_manager = HealthManager()
+
+
+@app.route("/", methods=["GET"])
+async def whoami():
+    return {
+        "host": socket.gethostname()
+    }, 200
+
+
+@app.route("/self_destruction", methods=["GET"])
+async def self_destruction():
+    endless_string = "#"
+    while True:
+        await asyncio.sleep(random.randrange(1, 10))
+        logger.info(f"String length: {len(endless_string)}")
+        endless_string *= 10
 
 
 @app.route("/ready", methods=["GET"])
