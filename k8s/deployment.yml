@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: whoami
-        image: whoami:1.0.1
+        image: whoami:1.1.1
         resources:
           limits:
             cpu: "0.5"

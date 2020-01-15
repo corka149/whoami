@@ -4,8 +4,8 @@ defmodule Whoami.MixProject do
   def project do
     [
       app: :whoami,
-      version: "1.1.0",
-      elixir: "~> 1.5",
+      version: "1.1.1",
+      elixir: "~> 1.9.1",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
