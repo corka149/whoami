@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: whoami
-        image: whoami:1.1.1
+        image: whoami:1.0.0
         resources:
           limits:
             cpu: "0.5"
@@ -25,12 +25,12 @@ spec:
             cpu: "0.2"
             memory: "100Mi"
         ports:
-        - containerPort: 4000
+        - containerPort: 8000
         livenessProbe: 
           httpGet:
-            path: /v1/health
-            port: 4000
+            path: /health
+            port: 8000
         readinessProbe:
           httpGet:
-            path: /v1/ready
-            port: 4000
+            path: /ready
+            port: 8000
