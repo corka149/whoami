@@ -3,8 +3,12 @@ import random
 import os
 import socket
 import asyncio
+
+import uvloop
 from quart import Quart
 
+# Use faster uv loop for async
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 class HealthManager:
 
