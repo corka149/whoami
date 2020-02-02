@@ -34,3 +34,6 @@ spec:
           httpGet:
             path: /v1/ready
             port: 4000
+        env:
+          - name: ENVIRONMENT_MESSAGE
+            value: Greetings stranger!
