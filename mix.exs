@@ -29,7 +29,8 @@ defmodule Whoami.MixProject do
       {:cowboy, "~> 2.8"},
       {:plug, "~> 1.10"},
       {:plug_cowboy, "~> 2.3"},
-      {:jason, "~> 1.2"}
+      {:jason, "~> 1.2"},
+      {:httpoison, "~> 1.7"}
     ]
   end
 end

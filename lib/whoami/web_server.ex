@@ -52,6 +52,15 @@ defmodule Whoami.WebServer do
     end
   end
 
+  # Ask another
+  def call(%{request_path: "/v1/askother"} = conn, _params) do
+    other_service_host = Application.fetch_env!(:whoami, :other_service_host)
+    %{body: body} = HTTPoison.get!(other_service_host <> "/v1/stats")
+    body = Jason.decode!(body)
+    body = Jason.encode!(%{answer_from_other: body})
+    send_resp(conn, 200, body)
+  end
+
   # Fallbacks
   def call(conn, _params) do
     routes = ~s"""
@@ -60,6 +69,7 @@ defmodule Whoami.WebServer do
       GET  /v1/ready
       GET  /v1/health
       GET  /v1/health/:value
+      GET  /v1/askother
     """
 
     send_resp(conn, 404, "NOT FOUND - Possible routes:\n" <> routes)
