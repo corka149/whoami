@@ -7,19 +7,10 @@
 # General application configuration
 use Mix.Config
 
-# Configures the endpoint
-config :whoami, WhoamiWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "YsxUfsZho6EJgsxIQfc40ujhq8jgvhG2F0kH7DDwzBB5FFi1ptEQF1JDUQS1CYbc",
-  pubsub: [name: Whoami.PubSub, adapter: Phoenix.PubSub.PG2]
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
-
-# Use Jason for JSON parsing in Phoenix
-config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

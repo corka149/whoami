@@ -4,10 +4,8 @@ defmodule Whoami.MixProject do
   def project do
     [
       app: :whoami,
-      version: "1.1.1",
-      elixir: "~> 1.9.1",
-      elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      version: "1.2.0",
+      elixirc_paths: ["lib"],
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -23,20 +21,15 @@ defmodule Whoami.MixProject do
     ]
   end
 
-  # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_), do: ["lib"]
-
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.0"},
-      {:phoenix_pubsub, "~> 1.1"},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:cowboy, "~> 2.8"},
+      {:plug, "~> 1.10"},
+      {:plug_cowboy, "~> 2.3"},
+      {:jason, "~> 1.2"}
     ]
   end
 end

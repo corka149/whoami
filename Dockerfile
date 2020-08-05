@@ -1,22 +1,7 @@
-FROM elixir:1.9.4-alpine AS build
+# BUILD
+FROM elixir:1.10 AS build
 
 COPY . .
-
-RUN \
-    mkdir -p /opt/app && \
-    chmod -R 777 /opt/app && \
-    apk update && \
-    apk --no-cache --update add \
-      make \
-      gcc \
-      libc-dev \
-      git \
-      g++ \
-      wget \
-      curl \
-      inotify-tools && \
-    update-ca-certificates --fresh && \
-    rm -rf /var/cache/apk/*
 
 RUN mix do local.hex --force, local.rebar --force
 
@@ -28,17 +13,20 @@ RUN mix deps.get && \
 RUN mkdir /whoami && \
     cp -r _build/prod/rel/whoami /whoami
 
-FROM alpine
 
-RUN apk --no-cache --update add openssl \
-        ncurses-libs \
-        libc-dev
+# RUNTIME
+FROM elixir:1.10-slim
 
 LABEL maintainer="corka149 <corka149@mailbox.org>"
 
 COPY --from=build /whoami .
 
-EXPOSE 4000
+# Security
+RUN groupadd -r whoami && useradd -r -s /bin/false -g whoami whoami
+RUN chown -R whoami:whoami /whoami
 
+# Run
+USER whoami
+EXPOSE 4000
 ENTRYPOINT ["/whoami/bin/whoami"]
 CMD ["start"]
