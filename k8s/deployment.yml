@@ -36,6 +36,6 @@ spec:
             port: 4000
         env:
           - name: OTHER_SERVICE_HOST
-            value: http://whoami-service:4000
+            value: http://whoami-service
           - name: ENVIRONMENT_MESSAGE
             value: Greetings stranger!
