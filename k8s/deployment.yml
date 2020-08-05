@@ -5,7 +5,7 @@ metadata:
   labels:
     app: whoami
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: whoami
@@ -19,7 +19,7 @@ spec:
         image: corka149/whoami:latest
         resources:
           limits:
-            cpu: 500m
+            cpu: 400m
             memory: 400Mi
           requests:
             cpu: 200m
@@ -36,6 +36,6 @@ spec:
             port: 4000
         env:
           - name: OTHER_SERVICE_HOST
-            value: http://whoami-service
+            value: http://whoami-service:4000
           - name: ENVIRONMENT_MESSAGE
             value: Greetings stranger!
