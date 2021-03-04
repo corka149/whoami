@@ -1,27 +1,31 @@
 # Whoami
 
-Simple web service for messing around with Kubernetes, Elixir/Erlang and Phoenix.
+Simple web service for messing around with Kubernetes, Elixir/Erlang and cowboy.
 
 ## Getting start
 
-To start your Phoenix server:
+To start your cowboy server:
 
   * Install dependencies with `mix deps.get`
-  * Start Phoenix endpoint with `mix phx.server`
+  * Start cowboy endpoint with `iex -S mix`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Endpoints:
+```
+GET  /v1/stats
+GET  /v1/selfdestroy
+GET  /v1/ready
+GET  /v1/health
+GET  /v1/health/:value
+GET  /v1/askother
+```
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
 ## Config of Whoami
 
 Environment variables:
-```sh
-# None environment variables
 ```
-
-## Useful commands
-
-```sh
-MIX_ENV=prod REPLACE_OS_VARS=true mix do phx.digest, release --env=prod
+NAME                  DESCRIPTION
+----                  -----------
+ENVIRONMENT_MESSAGE   Will be return from server
+OTHER_SERVICE_HOST    Address of other whomai server
 ```
