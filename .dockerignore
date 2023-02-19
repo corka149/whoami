@@ -1,5 +1,2 @@
-.elixir_ls/
-.elixir_ls
-
-deps/
-deps
+/target
+/.idea

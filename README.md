@@ -4,10 +4,7 @@ Simple web service for messing around with Kubernetes, Elixir/Erlang and cowboy.
 
 ## Getting start
 
-To start your cowboy server:
-
-  * Install dependencies with `mix deps.get`
-  * Start cowboy endpoint with `iex -S mix`
+  * Start `whoami` locally with `cargo run`
 
 Endpoints:
 ```
