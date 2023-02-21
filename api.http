@@ -1,3 +1,18 @@
 ### Get Stats
-GET http://localhost:4000
+GET http://localhost:4000/v1/stats
+
+### Selfdestroy
+GET http://localhost:4000/v1/selfdestroy
+
+### Readiness check
+GET http://localhost:4000/v1/ready
+
+### Health check
+GET http://localhost:4000/v1/health
+
+### Change health value
+GET http://localhost:4000/v1/health/1
+
+### Ask another
+GET http://localhost:4000/v1/askother
 
